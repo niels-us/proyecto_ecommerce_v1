@@ -15,9 +15,15 @@ const TiendaHeader = () => {
                 <nav className=" navbar-expand-md  fixed-top bg-danger pt-2 pb-2">
                     <div className="container">
                         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<<<<<<< HEAD
                             <NavLink to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                                 <img src="https://via.placeholder.com/50x50" alt="" />
                             </NavLink>
+=======
+                            <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                                <img src="https://th.bing.com/th/id/R.d7b678f617404881280fb7b3d855ff41?rik=DJ%2bSOV9hwPnyUw&pid=ImgRaw" width="70" alt="" />
+                            </a>
+>>>>>>> 57f035fffc15b0ff4dab66131b044e82b9bdb092
 
                             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
                                 <li><NavLink to="#" className="nav-link px-2 link-dark text-white dropdown-toggle" id="dropdownUser1"

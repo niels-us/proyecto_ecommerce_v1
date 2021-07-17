@@ -38,7 +38,7 @@ const CarritoPago = () => {
                                                     </div>
                                                     <div class="col-3">
                                                         <NavLink to={"/Carrito/Registro"}>
-                                                            <button type="button" class="btn btn-danger">Editar</button>
+                                                            <button type="button" class="btn btn-danger rounded-pill">Editar</button>
                                                         </NavLink>
                                                     </div>
                                                 </div>
@@ -47,13 +47,13 @@ const CarritoPago = () => {
                                                 <div class="row">
                                                     <div class="col-9">
                                                         <h5 class="card-title text-muted">Datos para la entrega</h5>
-                                                        <h6 class="card-subtitle mb-2 text-muted">{entrega.entregas.provincia - entrega.entregas.distrito }</h6>
+                                                        <h6 class="card-subtitle mb-2 text-muted">{entrega.entregas.provincia} - {entrega.entregas.distrito} </h6>
                                                         <h6 class="card-subtitle mb-2 text-muted">{entrega.entregas.direccion}</h6>
                                                         <h6 class="card-subtitle mb-2 text-muted">{entrega.entregas.fecha} </h6>
                                                     </div>
                                                     <div class="col-3">
                                                         <NavLink to={"/Carrito/Entrega"}>
-                                                            <button type="button" class="btn btn-secondary">Editar</button>
+                                                            <button type="button" class="btn btn-danger rounded-pill">Editar</button>
 
                                                         </NavLink>
                                                     </div>
@@ -79,7 +79,7 @@ const CarritoPago = () => {
                                             <div class="card-footer">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <h5 class="card-title text-warning">Tu pago Total es S/ 2,892.40</h5>
+                                                        <h5 class="card-title text-warning">Tu pago Total es S/ {carrito.total+25} </h5>
                                                         <h6 class="card-subtitle mb-2 text-info">Para finalizar tu compra, haz
                                                             clic en el botón "Ir a Pagar".
                                                             Se abrirá la página pagoweb.pe donde podrás realizar tu pago de
