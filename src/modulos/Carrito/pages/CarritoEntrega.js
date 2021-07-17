@@ -4,8 +4,11 @@ import CarritoResumen from '../components/CarritoResumen';
 import TiendaHeader from '../../Tienda/components/TiendaHeader';
 import { NavLink } from 'react-router-dom';
 import CarritoRegistro from './CarritoRegistro';
+import { useDispatch } from 'react-redux';
+import { getEntrega } from '../../../redux/actions/entregaAction';
 
 const CarritoEntrega = () => {
+    const dispatch = useDispatch();
     const carrito = useSelector((state) => state.carrito);
 
     const cliente = useSelector((state) => state.cliente);
@@ -29,6 +32,7 @@ const CarritoEntrega = () => {
     const registrarEntrega = (e) => {
         e.preventDefault();
         console.log(datosEntrega);
+        dispatch(getEntrega(datosEntrega)); 
     };
 
 

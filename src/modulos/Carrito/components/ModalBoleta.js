@@ -9,19 +9,21 @@ import { eliminarTodolosproductos } from '../../../redux/actions/carritoAction';
 const ModalBoleta = ({ mostrar, setMostrar }) => {
     const dispatch = useDispatch();
     const carrito = useSelector(state => state.carrito)
-    
+    const cliente = useSelector((state) => state.cliente);
+    const entrega = useSelector((state) => state.entrega);
 
-    let objActual=carrito.productos.map((data)=>{
+
+    let objActual = carrito.productos.map((data) => {
         return data
     })
     console.log(objActual)
-  
+
 
     const handlePagar = () => {
-      
-       
 
-      
+
+
+
         dispatch(eliminarTodolosproductos(objActual));
         // cerrar el modal
         setMostrar(false);
@@ -50,11 +52,11 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
                         <div className="col-md-12">
                             <div className="invoice">
                                 <div className="invoice-company text-inverse f-w-600">
-                                    CodiGo - POS
+                                    <img src="https://th.bing.com/th/id/R.d7b678f617404881280fb7b3d855ff41?rik=DJ%2bSOV9hwPnyUw&pid=ImgRaw" width="70" alt="" /> SISTEMA ECOMMERCE.SA
                                 </div>
                                 <div className="invoice-header">
                                     <div className="invoice-from">
-                                        <small>from</small>
+                                        <small>EMPRESA</small>
                                         <address className="m-t-5 m-b-5">
                                             <strong className="text-inverse">Twitter, Inc.</strong>
                                             <br />
@@ -68,17 +70,17 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
                                         </address>
                                     </div>
                                     <div className="invoice-to">
-                                        <small>to</small>
+                                        <small>CLIENTE</small>
                                         <address className="m-t-5 m-b-5">
                                             <strong className="text-inverse"></strong>
                                             <br />
-                                            Dirección
+                                            {entrega.entregas.direccion}
                                             <br />
-                                            City, Zip Code
+                                            {entrega.entregas.provincia} -  {entrega.entregas.distrito}
                                             <br />
-                                            Teléfono: 
+                                            {cliente.clientes.telefono}
                                             <br />
-                                            Email:
+                                            {cliente.clientes.email}
                                         </address>
                                     </div>
                                     <div className="invoice-date">
@@ -142,21 +144,21 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
                                         <div className="invoice-price-left">
                                             <div className="invoice-price-row">
                                                 <div className="sub-price">
-                                                    <small></small>
-                                                    <span className="text-inverse"></span>
+                                                    <small>Sub Total</small>
+                                                    <span className="text-inverse">S/. {carrito.total}</span>
                                                 </div>
                                                 <div className="sub-price">
-
+                                                    <span className="text-inverse"> + </span>
                                                 </div>
                                                 <div className="sub-price">
-                                                    <small></small>
-                                                    <span className="text-inverse"></span>
+                                                    <small>Costo de Envio</small>
+                                                    <span className="text-inverse"> S/. {carrito.transporte}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="invoice-price-right">
                                             <small>TOTAL</small>{' '}
-                                            <span className="f-w-600">S/.{carrito.total} </span>
+                                            <span className="f-w-600">S/.{carrito.total + carrito.transporte} </span>
                                         </div>
                                     </div>
                                 </div>

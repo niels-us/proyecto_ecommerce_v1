@@ -16,7 +16,7 @@ const TiendaHeader = () => {
                     <div className="container">
                         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                             <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                                <img src="https://via.placeholder.com/50x50" alt="" />
+                                <img src="https://th.bing.com/th/id/R.d7b678f617404881280fb7b3d855ff41?rik=DJ%2bSOV9hwPnyUw&pid=ImgRaw" width="70" alt="" />
                             </a>
 
                             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
