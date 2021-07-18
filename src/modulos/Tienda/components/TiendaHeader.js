@@ -1,13 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import TiendaListaCategorias from "./TiendaListaCategorias";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { getCategorias } from "../../../redux/actions/categoriaAction";
 
-const TiendaHeader = () => {
+const TiendaHeader = (props) => {
   const { carrito } = useSelector((state) => state);
-  const { categorias, cargandoCategorias } = useSelector(
-    (state) => state.categoria
-  );
+  const { productos } = useSelector((state) => state.producto);
+
+  const dispatch = useDispatch();
+  const handleCategoria = (id) => {
+    dispatch(getCategorias(id))
+  };
+
+  const handleProductos=()=>{
+    dispatch(getCategorias(null))
+  }
 
   return (
     <>
@@ -17,42 +24,58 @@ const TiendaHeader = () => {
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
               <NavLink
                 to="/"
-                className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+                className="d-flex align-items-center me-2 mb-lg-0 text-dark text-decoration-none"
               >
                 <img
                   src="https://th.bing.com/th/id/R.d7b678f617404881280fb7b3d855ff41?rik=DJ%2bSOV9hwPnyUw&pid=ImgRaw"
-                  width="70"
+                  width="60"
                   alt=""
                 />
               </NavLink>
 
               <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
-                <li>
+                <li class="nav-item dropdown">
                   <NavLink
+                    class="nav-link dropdown-toggle text-light"
                     to="#"
-                    className="nav-link px-2 link-dark text-white dropdown-toggle"
-                    id="dropdownUser1"
+                    id="navbarScrollingDropdown"
+                    role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
                     Categorias
                   </NavLink>
                   <ul
-                    className="dropdown-menu text-small"
-                    aria-labelledby="dropdownUser1"
+                    class="dropdown-menu"
+                    aria-labelledby="navbarScrollingDropdown"
                   >
-                    {categorias.map((objCategoria) => {
+                    {productos.map((objCategoria) => {
                       return (
-                        <TiendaListaCategorias
-                          objCategoria={objCategoria}
-                          key={objCategoria.id}
-                        />
+                        <li className="bg-light" key={objCategoria.id}>
+                          <NavLink
+                            className="dropdown-item"
+                            activeClassName={"text-danger"}
+                            to="#"
+                            onClick={() => {
+                              handleCategoria(objCategoria.id);
+                            }}
+                          >
+                            {objCategoria.categoria}
+                          </NavLink>
+                        </li>
                       );
                     })}
                   </ul>
                 </li>
+
                 <li>
-                  <NavLink to="#" class="nav-link px-2 link-dark text-white">
+                  <NavLink
+                    to="/Tienda/Tienda"
+                    class="nav-link px-2 link-dark text-white"
+                    onClick={() => {
+                      handleProductos('LimpiarCategorias');
+                    }}
+                  >
                     Productos
                   </NavLink>
                 </li>

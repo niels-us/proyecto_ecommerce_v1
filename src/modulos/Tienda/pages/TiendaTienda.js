@@ -6,21 +6,27 @@ import TiendaOfertas from "../components/TiendaOfertas";
 import TiendaSocialbar from "../components/TiendaSocialbar";
 import TiendaFooter from "../components/TiendaFooter";
 import TiendaSliderOfertas from "../components/TiendaSliderOfertas";
-
+import { useSelector } from "react-redux";
 
 const TiendaTienda = () => {
-    return (
-        <>
-            <TiendaHeader/>
-            <TiendaSocialbar/>
-            <TiendaSlider/>
-            <TiendaProductos />
-            <TiendaOfertas/>
-            <TiendaSliderOfertas/>
-            <TiendaFooter/>
+  const { categorias } = useSelector((state) => state.categoria);
 
-        </>
-    );
+  let mostratSlider = true;
+  if (categorias.length > 0) {
+    mostratSlider = false;
+  }
+
+  return (
+    <>
+      <TiendaHeader />
+      <TiendaSocialbar />
+      {mostratSlider ? <TiendaSlider /> : null}
+      <TiendaProductos categorias={categorias} />
+      <TiendaOfertas />
+      <TiendaSliderOfertas />
+      <TiendaFooter />
+    </>
+  );
 };
 
 export default TiendaTienda;

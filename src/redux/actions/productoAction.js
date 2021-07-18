@@ -1,4 +1,7 @@
-import { URL_BACKEND } from "../../environments/environments";
+import {
+  URL_BACKEND,
+  URL_BACKEND_CATEGORIAS,
+} from "../../environments/environments";
 import axios from "axios";
 import {
   FIN_CARGANDO_PRODCUTO,
@@ -19,12 +22,12 @@ export const getProductos = () => {
   return async (dispatch) => {
     dispatch(setCargandoProductos());
 
-    const endpoint = `${URL_BACKEND}/producto`;
+    const endpoint = `${URL_BACKEND_CATEGORIAS}/categorias`;
     const response = await axios.get(endpoint);
 
     dispatch({
       type: SET_PRODUCTOS,
-      payload: response.data
+      payload: response.data,
     });
   };
 };

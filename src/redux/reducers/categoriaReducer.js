@@ -1,7 +1,9 @@
-import { FIN_CARGANDO_CATEGORIA, INICIO_CARGANDO_CATEGORIA, SET_CATEGORIAS, SET_SELECCIONAR_CATEGORIA } from "../types/types";
-
-
-
+import {
+  FIN_CARGANDO_CATEGORIA,
+  INICIO_CARGANDO_CATEGORIA,
+  SET_CATEGORIAS,
+  SET_SELECCIONAR_CATEGORIA,
+} from "../types/types";
 
 const initialState = {
   categorias: [],
@@ -12,6 +14,7 @@ const initialState = {
 export const categoriaReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELECCIONAR_CATEGORIA:
+      console.log(action.payload);
       return {
         ...state,
         idCategoriaSeleccionado: action.payload,

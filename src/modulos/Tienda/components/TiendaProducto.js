@@ -20,7 +20,7 @@ const TiendaProducto = ({ objProducto }) => {
 
                 <div className="card shadow-sm rounded">
 
-                    <img src={objProducto.imagen} alt="" />
+                    <img src={objProducto.imagen} className="card-img-top" alt="" style={{width:'100%',height:'200px', objectFit:'contain'}}/>
 
                     <div className="card-body">
                         <p className="card-text">{objProducto.descripcion} </p>
@@ -36,7 +36,7 @@ const TiendaProducto = ({ objProducto }) => {
                                 >Ver</button>
                                 <button type="button" className="btn btn-sm btn-outline-danger my-2" onClick={agregarProducto}>Carrito</button>
                             </div>
-                            <small className="text-muted">9 mins</small>
+                            <small className="text-muted">{objProducto.categoriaId}</small>
                         </div>
                     </div>
                 </div>

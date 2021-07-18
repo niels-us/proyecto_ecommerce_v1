@@ -8,7 +8,7 @@ import { getCategorias } from "../../redux/actions/categoriaAction";
 
 const PosRouter = () => {
   const dispatch = useDispatch();
-  
+
   dispatch(getOfertas());
   dispatch(getProductos());
   dispatch(getCategorias());
@@ -17,7 +17,6 @@ const PosRouter = () => {
     <>
       <Switch>
         <Route path="/Tienda/Tienda" component={TiendaTienda} />
-        
       </Switch>
     </>
   );
