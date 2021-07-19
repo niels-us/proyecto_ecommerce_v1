@@ -1,11 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import TiendaHeader from '../../Tienda/components/TiendaHeader'
-import CarritoHeader from '../components/CarritoHeader'
+
 import CarritoResumen from '../components/CarritoResumen'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import CarritoEntrega from './CarritoEntrega'
+
 import { useDispatch } from 'react-redux';
 import { getRegistro } from '../../../redux/actions/registroAction'
 
@@ -13,7 +13,7 @@ import { getRegistro } from '../../../redux/actions/registroAction'
 const CarritoRegistro = () => {
     const dispatch = useDispatch();
     const carrito = useSelector((state) => state.carrito);
-    const cliente = useSelector((state) => state.cliente);
+
 
     
    const  [datosCliente, setDatos] = useState({
@@ -77,6 +77,7 @@ const CarritoRegistro = () => {
                                                             <input type="text" class="form-control" id="inputText1"
                                                                 onChange={handleInputChange}
                                                                 name="nombre"
+                                                                required
                                                             />
                                                         </div>
                                                     </div>
@@ -88,6 +89,7 @@ const CarritoRegistro = () => {
                                                             <input type="text" class="form-control" id="inputText2"
                                                                 onChange={handleInputChange}
                                                                 name="nombre"
+                                                                required
                                                             />
                                                         </div>
                                                     </div>

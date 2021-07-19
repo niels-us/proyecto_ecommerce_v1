@@ -8,6 +8,7 @@ import { ventasReducer } from "../reducers/ventasReducer";
 import { categoriaReducer } from "../reducers/categoriaReducer";
 import { registroReducer } from "../reducers/registroReducer";
 import {entregaReducer} from "../reducers/entregaReducer";
+import {  tipopagoReducer } from "../reducers/tipopagoReducer";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -22,7 +23,8 @@ const reducers = combineReducers({
   cliente:registroReducer,
   entrega: entregaReducer,
   auth: authReducer,
-  ventas: ventasReducer
+  ventas: ventasReducer,
+  tipopago:tipopagoReducer
 });
 
 export const store = createStore(

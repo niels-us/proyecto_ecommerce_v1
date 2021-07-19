@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import {  URL_BACKEND_VENTAS } from '../../../environments/environments';
 import { eliminarTodolosproductos } from '../../../redux/actions/carritoAction';
 
 
@@ -11,6 +12,34 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
     const carrito = useSelector(state => state.carrito)
     const cliente = useSelector((state) => state.cliente);
     const entrega = useSelector((state) => state.entrega);
+    const tipopago = useSelector((state) => state.tipopago);
+
+
+    let objventa = {
+
+        pedido_fecha: entrega.entregas.fecha,
+        pedido_pecio: carrito.total+carrito.transporte,
+        comprobante: tipopago.tipopagos.tipodocumento,
+        tipo_pago:  tipopago.tipopagos.formapago,
+        nombre: cliente.clientes.nombre,
+        descripcion: carrito.productos.length,
+        correo: cliente.clientes.email,
+        direccion: entrega.entregas.direccion,
+        pais: entrega.entregas.pais
+        
+    }
+    console.log(objventa)
+
+    const postVenta = async (objVenta) => {
+        const response = await fetch(`${URL_BACKEND_VENTAS}/ventas`, {
+            method: 'POST',
+            body: JSON.stringify(objVenta),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+    } 
+
 
 
     let objActual = carrito.productos.map((data) => {
@@ -20,10 +49,7 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
 
 
     const handlePagar = () => {
-
-
-
-
+        postVenta(objventa)
         dispatch(eliminarTodolosproductos(objActual));
         // cerrar el modal
         setMostrar(false);
@@ -32,7 +58,9 @@ const ModalBoleta = ({ mostrar, setMostrar }) => {
             icon: 'success',
             title: 'Éxito!',
             text: 'Pedido pagado con éxito'
+            
         });
+        
 
     }
 

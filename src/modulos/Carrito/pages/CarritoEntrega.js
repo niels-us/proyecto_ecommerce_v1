@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import CarritoResumen from '../components/CarritoResumen';
 import TiendaHeader from '../../Tienda/components/TiendaHeader';
 import { NavLink } from 'react-router-dom';
-import CarritoRegistro from './CarritoRegistro';
+
 import { useDispatch } from 'react-redux';
 import { getEntrega } from '../../../redux/actions/entregaAction';
 
@@ -15,11 +15,12 @@ const CarritoEntrega = () => {
     console.log(cliente.clientes)
 
     const [datosEntrega, setDatos] = useState({
+        pais:"",
         provincia: "",
         distrito: "",
         direccion: "",
         fecha: ""
-       
+
     });
 
     const handleInputChange = (e) => {
@@ -32,7 +33,7 @@ const CarritoEntrega = () => {
     const registrarEntrega = (e) => {
         e.preventDefault();
         console.log(datosEntrega);
-        dispatch(getEntrega(datosEntrega)); 
+        dispatch(getEntrega(datosEntrega));
     };
 
 
@@ -67,18 +68,29 @@ const CarritoEntrega = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="card-body">
                                                 <h5 class="card-title text-muted">Entrega</h5>
 
                                                 <form>
+                                                    <div class="form-group row">
+                                                        <label for="inputText0"
+                                                            class="col-sm-3 col-form-label  text-muted">Pais</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="inputText0"
+                                                                onChange={handleInputChange}
+                                                                name="pais"
+                                                            />
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="form-group row">
                                                         <label for="inputText1"
                                                             class="col-sm-3 col-form-label  text-muted">Provincia</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputText1" 
-                                                                 onChange={handleInputChange}
+                                                            <input type="text" class="form-control" id="inputText1"
+                                                                onChange={handleInputChange}
                                                                 name="provincia"
                                                             />
                                                         </div>
@@ -89,9 +101,9 @@ const CarritoEntrega = () => {
                                                             class="col-sm-3 col-form-label  text-muted">Distrito</label>
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" id="inputText2"
-                                                             onChange={handleInputChange}
+                                                                onChange={handleInputChange}
                                                                 name="distrito"
-                                                             />
+                                                            />
                                                         </div>
                                                     </div>
 
@@ -99,11 +111,11 @@ const CarritoEntrega = () => {
                                                         <label for="inputNumber3"
                                                             class="col-sm-3 col-form-label  text-muted">Direccion</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="inputNumber3" 
-                                                             onChange={handleInputChange}
+                                                            <input type="text" class="form-control" id="inputNumber3"
+                                                                onChange={handleInputChange}
                                                                 name="direccion"
 
-                                                            
+
                                                             />
                                                         </div>
                                                     </div>
@@ -111,8 +123,8 @@ const CarritoEntrega = () => {
                                                         <label for="inputEmail3"
                                                             class="col-sm-3 col-form-label  text-muted">Fecha</label>
                                                         <div class="col-sm-9">
-                                                            <input type="datetime-local" class="form-control" id="inputEmail3" 
-                                                                 onChange={handleInputChange}
+                                                            <input type="datetime-local" class="form-control" id="inputEmail3"
+                                                                onChange={handleInputChange}
                                                                 name="fecha"
                                                             />
                                                         </div>
@@ -121,11 +133,11 @@ const CarritoEntrega = () => {
 
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mt-3">
-                                                        <button type=""
+                                                            <button type=""
                                                                 class="btn btn-danger w-100 rounded-pill" onClick={registrarEntrega} >Validar
-                                                                </button>
-                                                                <hr />
-                                                            <NavLink to={"/Carrito/Pago"}>
+                                                            </button>
+                                                            <hr />
+                                                            <NavLink to={"/Carrito/TipoPago"}>
                                                                 <button type=""
                                                                     class="btn btn-danger w-100 rounded-pill">IR</button>
                                                             </NavLink>
@@ -170,7 +182,7 @@ const CarritoEntrega = () => {
                                                 </tr>
                                                 <tr>
                                                     <td class="pb-0">Costo del envío</td>
-                                                    <td class="pb-0">S/. 25</td>
+                                                    <td class="pb-0">S/. {carrito.transporte}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="py-0">
@@ -179,7 +191,7 @@ const CarritoEntrega = () => {
                                                 </tr>
                                                 <tr>
                                                     <td class="py-0">Total</td>
-                                                    <td class="py-0">S/. {carrito.total + 25} </td>
+                                                    <td class="py-0">S/. {carrito.total + carrito.transporte} </td>
                                                 </tr>
                                             </tbody>
                                         </table>

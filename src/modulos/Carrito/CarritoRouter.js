@@ -1,19 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+
 import { Switch, Route } from "react-router-dom";
-import { getProductos } from '../../redux/actions/productoAction';
+
 import CarritoCarrito from './pages/CarritoCarrito';
 import CarritoEntrega from './pages/CarritoEntrega';
 import CarritoPago from './pages/CarritoPago';
 import CarritoRegistro from './pages/CarritoRegistro';
+import CarritoTipoPago from './pages/CarritoTipoPago';
 
 
 const CarritoRouter = () => {
-
-
-
-
-
 
     return (
         <>
@@ -22,6 +18,7 @@ const CarritoRouter = () => {
                 <Route path="/Carrito/Carrito" component={CarritoCarrito} />
                 <Route path="/Carrito/Registro" component={CarritoRegistro} />
                 <Route path="/Carrito/Entrega" component={CarritoEntrega} />
+                <Route path="/Carrito/TipoPago" component={CarritoTipoPago} />
                 <Route path="/Carrito/Pago" component={CarritoPago} />
             </Switch>
         </>
